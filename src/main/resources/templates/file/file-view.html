@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<div class="container">
+  <div class="py-5 text-center">
+    <h2 th:text="#{page.file}">파일 조회</h2>
+  </div>
+  <span th:text="|#{label.file.title}:|">파일 제목:</span> <span th:text="${file.fileTitle}">파일 제목</span>
+  <br/>
+  <span th:text="|#{label.file.attach}:|">첨부파일:</span><a th:if="${file.attachFile}" th:href="|/files/attach/${file.id}|"
+           th:text="${file.getAttachFile().getUploadFileName()}" />
+  <br/>
+  <img th:each="imageFile : ${file.imageFiles}" th:src="|/files/images/${imageFile.getStoreFileName()}|" width="300" height="300"/>
+</div> <!-- /container -->
+</body>
+</html>
